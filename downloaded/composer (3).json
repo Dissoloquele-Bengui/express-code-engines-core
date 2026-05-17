@@ -1,0 +1,14 @@
+{
+    "name": "laravel-engines/shared",
+    "description": "Contracts, DTOs and Value Objects shared across all engines",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExpressCodeEngines\\Shared\\": "src/"
+        }
+    }
+}

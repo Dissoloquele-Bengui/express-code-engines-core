@@ -1,0 +1,27 @@
+{
+    "name": "laravel-engines/extended",
+    "description": "Extended engines: Reaction, Notification (Phases 2–4)",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel-engines/shared": "*",
+        "laravel-engines/core": "*",
+        "illuminate/support": "^10.0|^11.0",
+        "illuminate/queue": "^10.0|^11.0",
+        "illuminate/mail": "^10.0|^11.0",
+        "illuminate/notifications": "^10.0|^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExpressCodeEngines\\Extended\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ExpressCodeEngines\\Extended\\ExtendedServiceProvider"
+            ]
+        }
+    }
+}

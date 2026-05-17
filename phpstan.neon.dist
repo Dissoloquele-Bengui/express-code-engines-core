@@ -1,0 +1,20 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 8
+
+    paths:
+        - src
+
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    ignoreErrors:
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$#'
+        - message: '#Function shell_exec is unsafe#'
+          path: src/DocumentEngine/Processors/PdfProcessor.php
+        - message: '#Function exec is unsafe#'
+          path: src/DocumentEngine/Processors/PdfProcessor.php
+
+    treatPhpDocTypesAsCertain: false

@@ -1,0 +1,39 @@
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 8
+
+    paths:
+        - packages/core/src
+        - packages/extended/src
+        - packages/shared/src
+
+    excludePaths:
+        - packages/core/src/Examples
+
+    # Laravel magic methods and facades are handled by Larastan
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false
+
+    # Allow mixed in specific patterns (queue jobs, Eloquent models)
+    ignoreErrors:
+        # Eloquent dynamic properties are expected
+        - '#Access to an undefined property Illuminate\\Database\\Eloquent\\Model::\$#'
+
+        # Tagged services return mixed — acceptable for tag-based DI
+        - '#Parameter \#1 \$tagged of .* expects .*, mixed given#'
+
+        # shell_exec returns string|null — PdfProcessor handles null correctly
+        - message: '#Function shell_exec is unsafe#'
+          path: packages/extended/src/DocumentEngine/Processors/PdfProcessor.php
+
+        # eval-like functions in PdfProcessor are safe (escaped input)
+        - message: '#Function exec is unsafe#'
+          path: packages/extended/src/DocumentEngine/Processors/PdfProcessor.php
+
+    # Treat these as safe array shapes (DTO arrays)
+    treatPhpDocTypesAsCertain: false
+
+    # Strict rules
+    reportUnmatchedIgnoredErrors: true

@@ -1,0 +1,34 @@
+{
+    "name": "laravel-engines/monorepo",
+    "description": "Enterprise engine ecosystem for Laravel",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0",
+        "phpstan/phpstan": "^1.10",
+        "larastan/larastan": "^2.0",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "laravel/pint": "^1.0"
+    },
+    "repositories": [
+        {"type": "path", "url": "packages/shared"},
+        {"type": "path", "url": "packages/core"},
+        {"type": "path", "url": "packages/extended"}
+    ],
+    "autoload": {},
+    "scripts": {
+        "test":          "pest packages/*/tests",
+        "stan":          "phpstan analyse --configuration=phpstan.neon --memory-limit=512M",
+        "stan:baseline": "phpstan analyse --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon",
+        "format":        "pint packages/",
+        "ci":            ["@format", "@stan", "@test"]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}

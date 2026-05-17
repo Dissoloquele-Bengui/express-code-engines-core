@@ -1,0 +1,25 @@
+{
+    "name": "laravel-engines/extended",
+    "description": "Extended engines: AI, Document, Chat, Search, Reaction, Notification, and more",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel-engines/shared": "*",
+        "laravel-engines/core": "*",
+        "illuminate/support": "^11.0",
+        "illuminate/http": "^11.0",
+        "illuminate/database": "^11.0",
+        "illuminate/cache": "^11.0",
+        "illuminate/queue": "^11.0",
+        "illuminate/notifications": "^11.0",
+        "guzzlehttp/guzzle": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelEngines\\Extended\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

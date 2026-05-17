@@ -1,0 +1,16 @@
+{
+    "name": "laravel-engines/shared",
+    "description": "Shared DTOs, contracts and value objects for laravel-engines",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaravelEngines\\Shared\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

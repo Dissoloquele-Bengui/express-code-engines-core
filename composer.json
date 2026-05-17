@@ -1,0 +1,52 @@
+{
+    "name": "express-code-engines/monorepo",
+    "description": "Enterprise engine ecosystem for Laravel",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0",
+        "illuminate/http": "^11.0",
+        "illuminate/database": "^11.0",
+        "illuminate/cache": "^11.0",
+        "illuminate/queue": "^11.0",
+        "illuminate/notifications": "^11.0",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/config": "11.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^2.0",
+        "phpstan/phpstan": "^1.10",
+        "larastan/larastan": "^2.0",
+        "phpstan/phpstan-strict-rules": "^1.5",
+        "laravel/pint": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExpressCodeEngines\\Shared\\":   "packages/shared/src/",
+            "ExpressCodeEngines\\Core\\":     "packages/core/src/",
+            "ExpressCodeEngines\\Extended\\": "packages/extended/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "ExpressCodeEngines\\Tests\\": "packages/core/tests/"
+        }
+    },
+    "scripts": {
+        "test":          "pest packages/core/tests packages/extended/tests",
+        "test:core":     "pest packages/core/tests",
+        "test:extended": "pest packages/extended/tests",
+        "stan":          "phpstan analyse --configuration=phpstan.neon --memory-limit=512M",
+        "stan:baseline": "phpstan analyse --configuration=phpstan.neon --generate-baseline=phpstan-baseline.neon",
+        "format":        "pint packages/",
+        "ci":            ["@format", "@stan", "@test"]
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

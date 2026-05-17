@@ -1,0 +1,22 @@
+{
+    "name": "laravel-engines/core",
+    "description": "Core engines: Constraint, BusinessRule, Computation, Workflow",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel-engines/shared": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "ExpressCodeEngines\\Core\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "ExpressCodeEngines\\Core\\EngineServiceProvider"
+            ]
+        }
+    }
+}
