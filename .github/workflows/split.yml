@@ -1,0 +1,31 @@
+name: Split Monorepo
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package:
+          - { local: 'packages/shared',   remote: 'express-code-engines/shared' }
+          - { local: 'packages/core',     remote: 'express-code-engines/core' }
+          - { local: 'packages/extended', remote: 'express-code-engines-extended-' }
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: symplify/monorepo-split-github-action@v2.3
+        with:
+          package_directory: ${{ matrix.package.local }}
+          repository_organization: 'express-code-engines'
+          repository_name: ${{ matrix.package.remote }}
+          user_name: 'github-actions'
+          user_email: 'actions@github.com'
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}

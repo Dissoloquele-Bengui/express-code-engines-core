@@ -1,0 +1,10 @@
+# Criar .gitignore
+/vendor/
+/node_modules/
+composer.lock
+*.cache
+.phpunit.result.cache
+.env
+test_autoload.php
+engines_report.txt
+*.py
